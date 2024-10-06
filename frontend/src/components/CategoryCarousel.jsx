@@ -28,24 +28,28 @@ const CategoryCarousel = () => {
   };
 
   return (
-    <div>
-      <Carousel className="w-full max-w-xl mx-auto my-20">
-        <CarouselContent>
+    <div className="my-16 mx-auto max-w-4xl text-center">
+      <h2 className="text-3xl font-bold text-[#1f2937] mb-6">
+        Trending Job Categories
+      </h2>
+      <Carousel className="w-full max-w-2xl mx-auto">
+        <CarouselContent className="flex gap-4">
           {category.map((cat, index) => (
-            <CarouselItem className="md:basis-1/2 lg-basis-1/3">
+            <CarouselItem key={index} className="flex justify-center">
               <Button
                 onClick={() => searchJobHandler(cat)}
                 variant="outline"
-                className="rounded-full"
+                className="rounded-full border-black text-[#1f2937] hover:bg-[#1f2937] hover:text-white transition-all ease-in-out duration-200 shadow-lg px-6 py-3"
               >
                 {cat}
               </Button>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="text-[#1f2937] hover:text-gray-700" />
+        <CarouselNext className="text-[#1f2937] hover:text-gray-700" />
       </Carousel>
+    
     </div>
   );
 };
