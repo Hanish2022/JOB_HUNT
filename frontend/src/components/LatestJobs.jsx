@@ -21,7 +21,7 @@ const LatestJobs = () => {
               // key={index}
               className="transition-transform duration-300 transform hover:scale-405"
             >
-              <LatestJobCards key={job._id} job={job} />
+              <LatestJobCards  key={job._id} job={job} />
             </div>
           ))
         )}

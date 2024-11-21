@@ -12,18 +12,18 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Edit2, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
-import { setSearchCompanyByText } from "../../redux/companySlice";
 import { useNavigate } from "react-router-dom";
 
 const CompaniesTable = () => {
   const { companies, searchCompanyByText } = useSelector(
     (store) => store.company
   );
-  const [filterCompany, setFilterCompany] = useState(companies);
-const navigate=useNavigate()
+  const [filterCompany, setFilterCompany] = useState([]); // Ensure it's initialized as an array
+  const navigate = useNavigate();
+
   useEffect(() => {
     const filteredCompany =
-      companies.length > 0 &&
+      Array.isArray(companies) && // Ensure companies is an array
       companies.filter((company) => {
         if (!searchCompanyByText) {
           return true;
@@ -32,7 +32,7 @@ const navigate=useNavigate()
           ?.toLowerCase()
           .includes(searchCompanyByText.toLowerCase());
       });
-    setFilterCompany(filteredCompany);
+    setFilterCompany(filteredCompany || []); // Set as empty array if undefined
   }, [companies, searchCompanyByText]);
 
   return (
@@ -67,8 +67,8 @@ const navigate=useNavigate()
                   <PopoverContent className="w-32">
                     <div
                       onClick={() =>
-                          navigate(`/admin/companies/${company._id}`)
-                        }
+                        navigate(`/admin/companies/${company._id}`)
+                      }
                       className="flex items-center gap-2 w-fit cursor-pointer"
                     >
                       <Edit2 className="w-4" />

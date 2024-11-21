@@ -35,11 +35,10 @@ const Login = () => {
     const submitHandler = async (e) => {
       e.preventDefault();
       console.log(input);
-        
-
         try {
-          dispatch(setLoading(true));
-          const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+          dispatch(setLoading(true));//handling loading
+          //!: -> input se sidha data send kra h kyuki file nhi h isme
+          const res = await axios.post(`${USER_API_END_POINT}/login`, input , {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
           });
@@ -118,7 +117,7 @@ const Login = () => {
           {loading ? (
             <Button className="w-full my-6 p-3 bg-blue-500 text-white">
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Please wait
+             Kirpya Rukein
             </Button>
           ) : (
             <Button

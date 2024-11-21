@@ -8,8 +8,10 @@ import AppliedJobTable from "./AppliedJobTable";
 import { Label } from "@/components/ui/label";
 
 import UpdateProfileDialog from "./UpdateProfileDialog";
+import useGetAppliedJobs from "../hooks/useGetAppliedJobs";
 
 const Profile = () => {
+  useGetAppliedJobs()
   const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setSearchedQuery } from "../redux/jobSlice";
 
 const HeroSection = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const HeroSection = () => {
   const [query, setQuery] = useState("");
 
   const searchJobHandler = () => {
-    // dispatch(setSearchedQuery(query));
+    dispatch(setSearchedQuery(query));
     navigate("/browse");
   };
 
